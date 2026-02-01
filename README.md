@@ -1,11 +1,20 @@
-# Groq Chat - Premium AI Assistant
+# Suman AI ChatBot - Premium AI Assistant
 
-A fully production-ready, premium AI chatbot web application built with Next.js 15 and powered by Groq's lightning-fast AI models. Experience ChatGPT-level quality with a beautiful dark-themed interface, real-time streaming responses, and comprehensive conversation management.
+A fully production-ready, premium AI chatbot web application built with Next.js 15 and powered by Groq's lightning-fast AI models. Created by **Suman Sah**, this application delivers ChatGPT-level quality with a beautiful dark-themed interface, real-time streaming responses, and comprehensive conversation management.
 
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue?style=flat-square&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=flat-square&logo=tailwind-css)
 ![Groq](https://img.shields.io/badge/Groq-API-orange?style=flat-square)
+
+## 👨‍💻 Creator
+
+**Suman Sah** - Full Stack Developer & AI Enthusiast
+- 🚀 Passionate about creating innovative AI-powered applications
+- 💻 Specialized in Next.js, React, and modern web technologies
+- 🎯 Focused on delivering premium user experiences
+
+---
 
 ## ✨ Features
 
@@ -242,4 +251,4 @@ For issues and questions:
 
 ---
 
-Built with ❤️ using Next.js and Groq
+Built with ❤️ by **Suman Sah** using Next.js and Groq
