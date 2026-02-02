@@ -51,7 +51,7 @@ export function SystemPromptModal({ isOpen, onClose }: SystemPromptModalProps) {
       {/* Modal */}
       <div className="fixed inset-0 flex items-center justify-center p-4 z-50 pointer-events-none">
         <div
-          className="bg-zinc-900 rounded-xl border border-zinc-800 shadow-2xl w-full max-w-3xl max-h-[80vh] flex flex-col pointer-events-auto"
+          className="bg-zinc-900 rounded-xl border border-zinc-800 shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto flex flex-col pointer-events-auto"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}

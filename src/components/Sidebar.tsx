@@ -27,8 +27,10 @@ export function Sidebar({ onOpenSystemPrompt, onOpenSettings, isOpen = false, on
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
-  // Use external state if provided, otherwise use internal state
-  const sidebarOpen = isOpen || isMobileOpen;
+  // Determine sidebar open state
+  const isDesktop = typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches;
+  const sidebarOpen = isDesktop ? isOpen : isMobileOpen;
+
   const closeSidebar = () => {
     if (onClose) {
       onClose();
@@ -101,6 +103,17 @@ export function Sidebar({ onOpenSystemPrompt, onOpenSettings, isOpen = false, on
 
   return (
     <>
+      {/* Mobile open button */}
+      {!sidebarOpen && (
+        <button
+          className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-zinc-900 border border-zinc-800 shadow-lg hover:bg-zinc-800 transition-colors"
+          onClick={() => setIsMobileOpen(true)}
+          aria-label="Open sidebar"
+        >
+          <Menu className="w-6 h-6 text-zinc-300" />
+        </button>
+      )}
+
       {/* Mobile backdrop */}
       {sidebarOpen && (
         <div
