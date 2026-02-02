@@ -162,12 +162,28 @@ export function ChatView() {
     }
   };
 
+  const handleEditMessage = (messageId: string, newContent: string) => {
+    dispatch({
+      type: 'UPDATE_MESSAGE',
+      payload: {
+        messageId,
+        content: newContent,
+      },
+    });
+    
+    // Trigger new AI response after editing user message
+    const editedMessage = currentMessages.find(msg => msg.id === messageId);
+    if (editedMessage && editedMessage.role === 'user') {
+      handleSendMessage(newContent);
+    }
+  };
+
   const currentMessages = state.currentConversation?.messages || [];
 
   return (
-    <div className="flex-1 flex flex-col h-full">
+    <div className="flex-1 flex flex-col h-full min-h-0">
       {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto min-h-0">
         {currentMessages.length === 0 ? (
           <div className="h-full flex items-center justify-center p-4 sm:p-8">
             <div className="text-center max-w-md w-full">
@@ -189,7 +205,7 @@ export function ChatView() {
                 </div>
               </div>
               <h2 className="text-xl sm:text-2xl font-semibold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Start a Conversation
+                Talk to Suman AI
               </h2>
               <p className="text-zinc-400 mb-4 sm:mb-6 text-sm sm:text-base">
                 Ask me anything! I can help with coding, writing, learning, problem-solving, and more.
@@ -197,25 +213,25 @@ export function ChatView() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
                 <button
                   onClick={() => handleSendMessage("Help me write a Python function to sort a list")}
-                  className="px-3 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors text-left"
+                  className="px-3 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors text-center"
                 >
                   💻 Code example
                 </button>
                 <button
                   onClick={() => handleSendMessage("Explain quantum computing in simple terms")}
-                  className="px-3 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors text-left"
+                  className="px-3 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors text-center"
                 >
                   🎓 Learn something
                 </button>
                 <button
                   onClick={() => handleSendMessage("Help me write a professional email")}
-                  className="px-3 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors text-left"
+                  className="px-3 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors text-center"
                 >
                   ✍️ Writing help
                 </button>
                 <button
                   onClick={() => handleSendMessage("Give me creative ideas for a weekend project")}
-                  className="px-3 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors text-left"
+                  className="px-3 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors text-center"
                 >
                   💡 Brainstorm
                 </button>
@@ -229,6 +245,7 @@ export function ChatView() {
                 key={message.id}
                 message={message}
                 isStreaming={state.isStreaming && message.id === streamingMessageId}
+                onEditMessage={handleEditMessage}
               />
             ))}
             {state.isStreaming && streamingMessageId && (

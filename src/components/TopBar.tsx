@@ -139,7 +139,7 @@ export function TopBar({ onOpenSystemPrompt, onToggleSidebar }: TopBarProps) {
         {onToggleSidebar && (
           <button
             onClick={onToggleSidebar}
-            className="md:hidden p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors shrink-0"
+            className="p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 transition-colors shrink-0"
             aria-label="Toggle sidebar"
           >
             <Menu className="w-4 h-4" />

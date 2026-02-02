@@ -12,7 +12,7 @@ import { ClientOnly } from "@/components/ClientOnly";
 export default function HomePage() {
   const [isSystemPromptOpen, setIsSystemPromptOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
